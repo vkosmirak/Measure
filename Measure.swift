@@ -1,4 +1,10 @@
-//: Playground - noun: a place where people can play
+//
+//  Measure.swift
+//  OCE
+//
+//  Created by Volodymyr Kosmirak on 12/14/17.
+//  Copyright © 2017 QIMS. All rights reserved.
+//
 
 import Foundation
 
@@ -28,55 +34,3 @@ public func measure<T>(_ title: String = "",
     
     return try block()
 }
-
-
-// Void function example
-
-func voidFunction() {
-    for i in 0..<1000 {
-        _ = i * i
-    }
-}
-
-voidFunction()
-//replaced to
-measure { voidFunction() }
-
-
-// Function with return value
-
-func calculateSum() -> Int {
-    var all: Int = 0
-    for i in 0..<1000 {
-        all += i
-    }
-    return all
-}
-
-let x1 = calculateSum()
-//replaced to
-let x2 = measure("calculateSum") { calculateSum() }
-
-
-
-// Throwing functions
-
-struct Account: Decodable {
-    let fullName: String
-    let id: Int
-    let twitter: URL
-}
-
-let json = """
-{
- "fullName": "Federico Zanetello",
- "id": 123456,
- "twitter": "http://twitter.com/zntfdr"
-}
-""".data(using: .utf8)! // our data in native (JSON) format
-
-let myStruct1 = try JSONDecoder().decode(Account.self, from: json)
-//replaced to
-let myStruct2 = try measure("decoding account") { try JSONDecoder().decode(Account.self, from: json) }
-
-
