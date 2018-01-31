@@ -15,6 +15,7 @@ import Foundation
 ///   - block: executing peace of code
 /// - Returns: return same value as block, even Void
 /// - Throws: throws if block throws
+@discardableResult
 public func measure<T>(_ title: String = "",
                        file: String = #file,
                        function: String = #function,
@@ -34,3 +35,51 @@ public func measure<T>(_ title: String = "",
     
     return try block()
 }
+
+/// Class for advanced measuring
+///
+/// Example:
+///
+///     Measure.start("Open screen")
+///     Measure.finish("Open screen")
+///
+///     Measure.start(); defer { Measure.finish() }
+///
+class Measure {
+    
+    private static var measureIds = [String: Date]()
+    
+    static func start(_ id: String = "",
+                      file: String = #file,
+                      function: String = #function) {
+        var id = id
+        if id.isEmpty {
+            let fileName = URL(string: file)?.lastPathComponent.components(separatedBy: ".").first ?? ""
+            id = fileName + " " + function
+        }
+        measureIds[id] = Date()
+    }
+    
+    static func finish(_ id: String = "",
+                       file: String = #file,
+                       function: String = #function) {
+        var id = id
+        if id.isEmpty {
+            let fileName = URL(string: file)?.lastPathComponent.components(separatedBy: ".").first ?? ""
+            id = fileName + " " + function
+        }
+        
+        guard let start = measureIds[id] else {
+            debugPrint("Measure error: \(id) was not started")
+            return
+        }
+        
+        measureIds[id] = nil
+        
+        let end = Date()
+        let time = end.timeIntervalSince(start).description.prefix(6)
+        let message = "Measure: \(id) \(time)"
+        debugPrint(message)
+    }
+}
+
