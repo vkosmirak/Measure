@@ -1,9 +1,9 @@
 //
 //  Measure.swift
-//  OCE
+//  Volodymyr Kosmirak
 //
 //  Created by Volodymyr Kosmirak on 12/14/17.
-//  Copyright © 2017 QIMS. All rights reserved.
+//  Copyright © 2017 Volodymyr Kosmirak. All rights reserved.
 //
 
 import Foundation
