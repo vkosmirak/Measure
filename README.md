@@ -6,6 +6,10 @@ Simple way to measure duration of function in Swift
 Measure: 1.0072 (MyPlayground sleep() line 35)`
 ```
 
+### Installation:
+
+Drag & drop `Measure.swift` into project
+
 
 ## How to use
 
