@@ -69,6 +69,8 @@ measure("Just function") {
 
 ### TODO: 
 
-1. Return value, not just print it
-2. Prettify workspace
-3. Complete readme
+1. Add ability to return duration value, not just print it
+2. Show example with `defer`
+3. Consider renaming: `time`, `duration` e.g.
+4. Prettify workspace
+5. Complete readme
