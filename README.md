@@ -19,9 +19,7 @@ Drag & drop `Measure.swift` into project
 ```swift
 voidFunction()
 ```
-
-<img src="https://png.icons8.com/ios/1600/down.png" width="50" hspace="50">
-
+->
 ```swift
 measure {
     voidFunction()
@@ -33,9 +31,7 @@ measure {
 ```swift
 let users = Users.loadFromDatabase()
 ```
-
-<img src="https://png.icons8.com/ios/1600/down.png" width="50" hspace="50">
-
+->
 ```swift
 let users = measure { Users.loadFromDatabase() }
 ```
@@ -45,9 +41,7 @@ let users = measure { Users.loadFromDatabase() }
 ```swift
 let user = try JSONDecoder().decode(User.self, from: json)
 ```
-
-<img src="https://png.icons8.com/ios/1600/down.png" width="50" hspace="50">
-
+->
 ```swift
 let user = try measure { try JSONDecoder().decode(User.self, from: json) }
 ```
@@ -57,20 +51,9 @@ let user = try measure { try JSONDecoder().decode(User.self, from: json) }
 ```swift
 voidFunction()
 ```
-
-<img src="https://png.icons8.com/ios/1600/down.png" width="50" hspace="50">
-
+->
 ```swift
 measure("Just function") {
     voidFunction()
 }
 ```
-
-
-### TODO: 
-
-1. Add ability to return duration value, not just print it
-2. Show example with `defer`
-3. Consider renaming: `time`, `duration` e.g.
-4. Prettify workspace
-5. Complete readme
